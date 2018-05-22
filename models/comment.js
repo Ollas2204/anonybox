@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.STRING
   }, {});
   Comment.associate = function(models) {
-    // associations can be defined here
+    Comment.belongsTo(models.User);
+    Comment.belongsTo(models.Post);
   };
   return Comment;
 };

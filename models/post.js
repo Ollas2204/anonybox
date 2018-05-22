@@ -5,7 +5,11 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.TEXT
   }, {});
   Post.associate = function(models) {
-    // associations can be defined here
+    Post.belongsToMany(models.User, {
+      through: 'Comments'
+    });
+    
+    Post.hasMany(models.Comment);
   };
   return Post;
 };

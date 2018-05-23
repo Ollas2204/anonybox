@@ -2,13 +2,15 @@
 <body>
         <%- include('./template/standardNav.ejs') %>
     <div>
-        <div class='col-xs-12' style='height:90px;'>
-            <div style='position:relative;float:right;'>
-                    <form class="navbar-form navbar-left">
+        <div class='col-xs-12' style='min-height:90px; margin-bottom: 50px;'>
+            <div class="centered" style='position:relative'>
+                    <form class="navbar-form navbar-left col-xs-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search your post" style='border-radius:2px;width:500px;'>
+                            <textarea placeholder="  confess your sins!" style='height:70px; width:900px;display:flex;border-radius:10px;' name="content" id="" cols="30" rows="10"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-default" style='border-radius:2px;'>Submit</button>
+                        <div class="col-xs-12" style='margin-top:10px;'>
+                            <button type="submit" class="btn btn-default" style='border-radius:2px;'>Add New Post</button>
+                        </div>
                     </form>
             </div>
         </div>

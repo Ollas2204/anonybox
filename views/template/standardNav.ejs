@@ -7,10 +7,10 @@
       <ul class="nav navbar-nav navbar-right">
             <% if(username === undefined){ %>
                 <li style='border-right:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/users/register">Register</a></li>
-                <li style='border-left:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/users/login">Login</a></li>
+                <li style='border-left:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/login">Login</a></li>
             <% }else{ %>
-                <li style='border-right:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/users/register"><%= username %></a></li>
-                <li style='border-left:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/users/login">Logout</a></li>
+                <li style='border-right:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/users/<%= userId %>"><%= username %></a></li>
+                <li style='border-left:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/logout">Logout</a></li>
             <% } %>
       </ul>
     </div>

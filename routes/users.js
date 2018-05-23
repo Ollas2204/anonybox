@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const validateRegister = require('./../middlewares').validateRegister;
 const usersController = require('./../controllers').users;
-const authController = require('./../controllers').auth;
+const { isLoggedIn } = require('./../middlewares');
 
 router.get('/register', usersController.showRegisterPage);
 
@@ -11,11 +11,7 @@ router.post(
   validateRegister, 
   usersController.registerUser);
 
-router.get('/login', usersController.showLoginPage);
-
-router.post('/login', authController.loginUser);
-
-router.get('/logout', authController.logoutUser);
+router.get('/:userId', isLoggedIn, usersController.showProfilePage);
 
 router.get('/:userId/edit', usersController.showEditPage);
 

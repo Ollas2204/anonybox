@@ -1,4 +1,4 @@
-const User = require('./../models').User;
+const { User, Post } = require('./../models');
 
 exports.showRegisterPage = (req, res) => {
   res.render('registerForm');
@@ -13,11 +13,22 @@ exports.registerUser = (req, res) => {
   };
 
   User.create(newUser)
-    .then(result => res.redirect('/users/login'));
+    .then(result => res.redirect('/login'));
 };
 
 exports.showLoginPage = (req, res) => {
   res.render('loginForm');
+};
+
+exports.showProfilePage = (req, res) => {
+  const { userId } = req.params;
+  User.findById(userId, {
+    include: [Post]
+  })
+    .then(user => {
+      console.log(user);
+      res.render('profile', { user })
+    });
 };
 
 exports.showEditPage = (req, res) => {

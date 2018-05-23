@@ -22,12 +22,12 @@ exports.showLoginPage = (req, res) => {
 
 exports.showProfilePage = (req, res) => {
   const { userId } = req.params;
-  User.findById(userId, {
+  User.findOne({ 
+    where : { id : userId },
     include: [Post]
   })
     .then(user => {
-      console.log(user);
-      res.render('profile', { user })
+      res.render('profile', { posts: user.Posts })
     });
 };
 

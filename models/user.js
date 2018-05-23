@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     User.belongsToMany(models.Post, {
       through: 'Comments'
     });
+
+    User.hasMany(models.Post);
   };
 
   User.prototype.checkPassword = function(passwordText) {

@@ -10,7 +10,7 @@ exports.loginUser = (req, res) => {
         if (match) {
           req.session.username = user.username;
           req.session.userId = user.id;
-          res.redirect('/');
+          res.redirect(`/users/${user.id}`);
         } else {
           res.redirect('/login');
         }

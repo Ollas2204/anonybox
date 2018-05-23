@@ -9,13 +9,13 @@ exports.loginUser = (req, res) => {
         const match = user.checkPassword(passwordText);
         if (match) {
           req.session.username = user.username;
-          req.session.id = user.id;
+          req.session.userId = user.id;
           res.redirect('/');
         } else {
-          res.redirect('/users/login');
+          res.redirect('/login');
         }
       } else {
-        res.redirect('/users/login');
+        res.redirect('/login');
       }
     });
 }
@@ -25,7 +25,7 @@ exports.logoutUser = (req, res) => {
     delete req.session.username;
     res.redirect('/');
   } else {
-    res.redirect('/users/login');
+    res.redirect('/login');
   }
 }
 

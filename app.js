@@ -21,6 +21,13 @@ app.use(session({
   }
 }));
 
+app.use((req,res,next)=>{
+  res.locals.username = req.session.username
+  res.locals.userId = req.session.id
+  next()
+})
+
+
 // Set views directory and view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

@@ -1,0 +1,10 @@
+.centered{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+}
+.post-default{
+    box-shadow:none;
+    border:none;
+}

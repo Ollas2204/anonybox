@@ -1,0 +1,61 @@
+<%- include('./template/header.ejs') %>
+<body>
+    <nav class="navbar navbar-default" style='height:100px;background:white;border:none;'>
+        <div class="container-fluid" style='height:100%;padding-right:95px;padding-top:10px;padding-left:50px;'>
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header" style='height:100%;'>
+            <a class="navbar-brand" style='height:80%' href="#"><img class='img-responsive' style='max-height:100%' src="/img/anonibox.png" alt=""></a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+                <li >Hi Anonymous!</li>
+              </ul>
+        </div>
+    </nav>
+    <div>
+        <div class='col-xs-12' style='height:90px;'>
+            <div style='position:relative;float:right;'>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search your post" style='border-radius:2px;width:500px;'>
+                        </div>
+                        <button type="submit" class="btn btn-default" style='border-radius:2px;'>Submit</button>
+                    </form>
+            </div>
+        </div>
+        <div class='panel panel-default col-xs-offset-2 col-xs-8 post-default' style='min-height:300px; background-color: rgba(44, 44, 44, 0.1);border-radius:15px;padding:15px;'>
+            <div class='panel panel-default post-default' style='padding:20px;margin-top:10px;min-height:180px; background-color: white;border-radius:15px;'>
+                <div>
+                    <p>saya</p>
+                    <p>tidak tahu mw bilang apa</p>
+                </div>
+            </div>
+            <p>1 like</p>
+            <div id='hidecommentId' class='panel panel-default post-default' style='padding-top:5px;padding-left:15px;margin-top:10px;height:35px; background-color: rgba(255, 255, 255, 0.445);border-radius:20px;'>
+                <a onclick="showComment(id)" style='font-size:0.8em;'>View Comments (18)</a>
+            </div>
+            <div id='showcommentId' class='panel panel-default post-default' style='padding:15px;padding-top:5px;padding-left:15px;margin-top:10px;min-height:100px; background-color: rgba(255, 255, 255, 0.445);border-radius:20px;display:none;'>
+                <a onclick="hideComment(id)" style='font-size:0.8em;'>Hide Comments</a>
+                <div id='showcommentId' class='panel panel-default post-default' style='padding:30px;margin-top:10px;min-height:75px; background-color: rgba(255, 255, 255, 0.568);border-radius:10px;'>
+                        <p style='font-size:0.8em;'>Comment1</p>
+                </div>
+                <div id='showcommentId' class='panel panel-default post-default' style='padding:30px;margin-top:10px;min-height:75px; background-color: rgba(255, 255, 255, 0.568);border-radius:10px;'>
+                        <p style='font-size:0.8em;'>Comment2</p>
+                </div>
+                <div id='showcommentId' class='panel panel-default post-default' style='padding:30px;margin-top:10px;min-height:75px; background-color: rgba(255, 255, 255, 0.568);border-radius:10px;'>
+                        <p style='font-size:0.8em;'>Comment3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showComment(id){
+            document.getElementById('showcommentId').style.display='block'
+            document.getElementById('hidecommentId').style.display='none'
+        }
+        function hideComment(id){
+            document.getElementById('hidecommentId').style.display='block'
+            document.getElementById('showcommentId').style.display='none'
+        }
+    </script>
+</body>
+</html>

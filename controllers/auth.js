@@ -9,7 +9,8 @@ exports.loginUser = (req, res) => {
         const match = user.checkPassword(passwordText);
         if (match) {
           req.session.username = user.username;
-          res.redirect('/dashboard');
+          req.session.id = user.id;
+          res.redirect('/');
         } else {
           res.redirect('/users/login');
         }

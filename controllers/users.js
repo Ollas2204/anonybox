@@ -1,7 +1,7 @@
 const User = require('./../models').User;
 
 exports.showRegisterPage = (req, res) => {
-  res.render('register');
+  res.render('registerForm');
 };
 
 exports.registerUser = (req, res) => {
@@ -17,7 +17,7 @@ exports.registerUser = (req, res) => {
 };
 
 exports.showLoginPage = (req, res) => {
-  res.render('login-user');
+  res.render('loginForm');
 };
 
 exports.showEditPage = (req, res) => {

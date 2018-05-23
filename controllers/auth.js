@@ -23,7 +23,7 @@ exports.loginUser = (req, res) => {
 exports.logoutUser = (req, res) => {
   if (req.session.username) {
     delete req.session.username;
-    res.send('logout');
+    res.redirect('/');
   } else {
     res.redirect('/users/login');
   }

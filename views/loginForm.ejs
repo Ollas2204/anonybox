@@ -1,16 +1,21 @@
 <%- include('./template/header.ejs') %>
-<body>
-    <%- include('./template/standardNav.ejs') %>
-    <div  class='col-xs-offset-2 col-xs-8'>
-        <h1>Login</h1>
-        <div class='panel panel-default' style='margin-top:25px;padding:50px;'>
-            <form action="/login" method='post' style='text-align:center !important;'>
-                Username <br>
-                <input class='col-xs-6' name="username" type="text" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'><br><br>
-                Password <br>
-                <input class='col-xs-6' name="password" type="password" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'><br><br>
-                <button type="submit" style='background:none;border-radius:5px;border:1px rgba(0, 0, 0, 0.4) solid;'>Login</button>
-            </form>
-        </div>
+  <div class='col-xs-offset-2 col-xs-8'>
+    <h1>Login</h1>
+    <%- include('./template/flash') %>
+    <div class='panel panel-default' style='margin-top:25px;padding:50px;'>
+      <form action="/login" method='post' style='text-align:center !important;'>
+        Username
+        <br>
+        <input class='col-xs-6' name="username" type="text" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'>
+        <br>
+        <br> Password
+        <br>
+        <input class='col-xs-6' name="password" type="password" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'>
+        <br>
+        <br>
+        <button type="submit" style='background:none;border-radius:5px;border:1px rgba(0, 0, 0, 0.4) solid;'>Login</button>
+      </form>
     </div>
-</body>
+  </div>
+  
+<%- include('./template/footer.ejs') %>

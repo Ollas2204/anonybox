@@ -1,28 +1,38 @@
 const express = require('express');
 const router = express.Router();
-const isLoggedIn = require('./../middlewares').isLoggedIn;
+const { isLoggedIn, isLoggedOut } = require('./../middlewares');
 const models = require('../models');
 const authController = require('./../controllers').auth;
 const usersController = require('./../controllers').users;
-const {Post,Comment,Like} = models;
+const { Post, Comment, Like } = models;
 
 router.get('/', (req,res)=>{
   Post.findAll().then(posts=>{
     posts.forEach(element => {
       element.cleanTag=element.cleanFromTag()
     });
-    res.render('index',{posts:posts})
-  })
+    res.render('index',{ posts, page: 'home' });
+  });
 });
 
 router.get('/dashboard', isLoggedIn, (req, res) => {
   res.render('dashboard');
 });
 
-router.get('/login', usersController.showLoginPage);
+router.get(
+  '/login',
+  isLoggedOut,
+  usersController.showLoginPage
+);
 
-router.post('/login', authController.loginUser);
+router.post(
+  '/login',
+  isLoggedOut,
+  authController.loginUser);
 
-router.get('/logout', authController.logoutUser);
+router.get(
+  '/logout', 
+  isLoggedIn,
+  authController.logoutUser);
 
 module.exports = router;

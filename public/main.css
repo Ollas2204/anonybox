@@ -48,3 +48,95 @@
 .no-outline:active{
     outline:none
 }
+.show-comments{
+    padding-top:5px;
+    padding-left:15px;
+    margin-top:10px;
+    height:35px;
+     background-color: rgba(255, 255, 255, 0.445);
+    border-radius:20px;
+}
+.hide-comments{
+    padding:15px;
+    padding-top:5px;
+    padding-left:15px;
+    margin-top:10px;
+    min-height:100px;
+     background-color: rgba(255, 255, 255, 0.445);
+    border-radius:20px;
+    display:none;
+}
+.delete-comment-button{
+    border:none;
+    background:none;
+    font-size:0.7em;
+    position:absolute;
+    right:0px;
+    bottom:0px;
+}
+.comment-input{
+    border-radius:15px;
+    border:1px rgba(0, 0, 0, 0.4) solid;
+    width:80%;
+}
+.post-content{
+    padding:20px;
+    margin-top:25px;
+    min-height:180px;
+     background-color: white;
+    border-radius:15px;
+}
+.login-form{
+    float:none;
+    border-radius:15px;
+    border:1px rgba(0, 0, 0, 0.4) solid;
+}
+
+.normal-button:hover{
+    transition: all 0.3s;
+    -moz-transition:all 0.3s ;
+    -o-transition:all 0.3s ;
+    background-color:black !important;
+    color:white;
+}
+
+.post-button:hover{
+    transition: all 0.5s;
+    -moz-transition:all 0.5s ;
+    -o-transition:all 0.5s ;
+    color:rgba(37, 37, 37, 0.623);
+}
+
+a{
+    color: black;
+}
+
+a:hover{
+    transition: all 0.2s;
+    -moz-transition:all 0.2s ;
+    -o-transition:all 0.2s ;
+    color:rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+}
+
+a:focus{
+    color:rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+}
+
+a:active{
+    color:rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+}
+.form-button{
+    background:none;
+    border-radius:5px;
+    border:1px rgba(0, 0, 0, 0.4) solid;
+}
+
+button:active{
+    outline:none;
+}
+button:focus{
+    outline:none;
+}

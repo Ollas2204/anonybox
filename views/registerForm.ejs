@@ -6,22 +6,22 @@
       <form action="http://localhost:3000/users/register" method='post' style='text-align:center !important;'>
         Email
         <br>
-        <input class='col-xs-6 no-outline' name="email" type="text" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;' value="<%= body ? body.email : '' %>">
+        <input class='col-xs-6 login-form no-outline' name="email" type="text" value="<%= body ? body.email : '' %>">
         <br>
         <br> Username
         <br>
-        <input class='col-xs-6 no-outline' name="username" type="text" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;' value="<%= body ? body.username : '' %>">
+        <input class='col-xs-6 login-form no-outline' name="username" type="text" value="<%= body ? body.username : '' %>">
         <br>
         <br> Password
         <br>
-        <input class='col-xs-6 no-outline' name="password" type="password" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'>
+        <input class='col-xs-6 login-form no-outline' name="password" type="password">
         <br>
         <br> Confirm Password
         <br>
-        <input class='col-xs-6 no-outline' name="password-confirm" type="password" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'>
+        <input class='col-xs-6 login-form no-outline' name="password-confirm" type="password">
         <br>
         <br>
-        <button type="submit" style='background:none;border-radius:5px;border:1px rgba(0, 0, 0, 0.4) solid;'>Register</button>
+        <button class='normal-button form-button' type="submit">Register</button>
       </form>
     </div>
   </div>

@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const session = require('express-session');
+const validator = require('express-validator');
+const flash = require('connect-flash');
 const path = require('path');
 const routes = require('./routes');
 
@@ -21,11 +23,8 @@ app.use(session({
   }
 }));
 
-app.use((req,res,next)=>{
-  res.locals.username = req.session.username;
-  res.locals.userId = req.session.userId;
-  next()
-})
+// Set flash
+app.use(flash());
 
 
 // Set views directory and view engine
@@ -38,6 +37,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Parse incoming request data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false }));
+
+// Set global variables in respond
+app.use((req,res,next)=>{
+  res.locals.flashes = req.flash();
+  res.locals.page = null;
+  res.locals.body = null;
+  res.locals.username = req.session.username;
+  res.locals.userId = req.session.userId;
+  next();
+})
 
 // Handle all incoming request to this route
 app.use('/', routes);

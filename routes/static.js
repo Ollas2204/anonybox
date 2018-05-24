@@ -4,16 +4,10 @@ const { isLoggedIn, isLoggedOut } = require('./../middlewares');
 const models = require('../models');
 const authController = require('./../controllers').auth;
 const usersController = require('./../controllers').users;
+const staticController = require('./../controllers').static;
 const { Post, Comment, Like } = models;
 
-router.get('/', (req,res)=>{
-  Post.findAll({include:[Comment]}).then(posts=>{
-    posts.forEach(element => {
-      element.cleanTag=element.cleanFromTag()
-    });
-    res.render('index',{ userId:req.session.userId,posts, page: 'home' });
-  });
-});
+router.get('/', staticController.showHomePage);
 
 router.get('/dashboard', isLoggedIn, (req, res) => {
   res.render('dashboard');

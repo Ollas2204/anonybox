@@ -27,7 +27,7 @@ exports.showProfilePage = (req, res) => {
   const { userId } = req.params;
   Post.findAll({ include: [Comment], where:{ UserId: userId }})
     .then(posts =>{
-      res.render('profile', { posts: posts })
+      res.render('profile', { posts, page: 'profile' })
     });
 };
 
@@ -59,5 +59,5 @@ exports.updateUser = (req, res) => {
 };
 
 exports.deleteUser = (req, res) => {
-  
+
 }

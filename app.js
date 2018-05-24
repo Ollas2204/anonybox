@@ -6,6 +6,7 @@ const flash = require('connect-flash');
 const path = require('path');
 const routes = require('./routes');
 const errorHandlers = require('./handlers/errorHandlers');
+const helpers = require('./helpers');
 
 // Setup express app
 const app = express();
@@ -45,6 +46,7 @@ app.use((req,res,next)=>{
   res.locals.body = null;
   res.locals.username = req.session.username;
   res.locals.userId = req.session.userId;
+  res.locals.helpers = helpers;
   next();
 });
 

@@ -36,6 +36,14 @@ module.exports = (sequelize, DataTypes) => {
         const password = user.password;
         const hash = bcrypt.hashSync(password, 8);
         user.password = hash;
+      },
+      beforeUpdate: (user, option) => {
+        const previousData = user._previousDataValues
+        if (previousData.password !== user.password) {
+          const password = user.password;
+          const hash = bcrypt.hashSync(password, 8);
+          user.password = hash;
+        }
       }
     }
   });

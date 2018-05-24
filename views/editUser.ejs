@@ -1,0 +1,34 @@
+<%- include('./template/header.ejs') %>
+<%- include('./template/flash') %>
+
+<div class='col-xs-offset-2 col-xs-8'>
+  <h1>Edit User Data</h1>
+  <div class='panel panel-default' style='margin-top:25px;padding:50px;'>
+    <form action="/users/<%= user.id %>/edit" method='POST' style='text-align:center !important;'>
+      Email
+      <br>
+      <input class='col-xs-6 login-form no-outline' name="email" type="text" value="<%= user.email %>">
+      <br>
+      <br> Username
+      <br>
+      <input class='col-xs-6 login-form no-outline' name="username" type="text" value="<%= user.username %>">
+      <br>
+      <br> Old Password
+      <br>
+      <input class='col-xs-6 login-form no-outline' name="old-password" type="password">
+      <br>
+      <br> New Password
+      <br>
+      <input class='col-xs-6 login-form no-outline' name="new-password" type="password">
+      <br>
+      <br> Confirm New Password
+      <br>
+      <input class='col-xs-6 login-form no-outline' name="new-password-confirm" type="password">
+      <br>
+      <br>
+      <button class='normal-button form-button' type="submit">Save Update</button>
+    </form>
+  </div>
+</div>
+
+<%- include('./template/footer.ejs') %>

@@ -46,7 +46,7 @@ app.use((req,res,next)=>{
   res.locals.username = req.session.username;
   res.locals.userId = req.session.userId;
   next();
-})
+});
 
 // Handle all incoming request to this route
 app.use('/', routes);

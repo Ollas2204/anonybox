@@ -10,8 +10,9 @@ exports.addPost = (req, res) => {
 
 exports.updatePost = (req, res) => {
   const updatePost = req.body
+  console.log(req.body)
   updatePost.UserId = req.session.userId
-  Post.update(updatePost,{where:{id:updatePost.id}}).then(post => {
+  Post.update(updatePost,{where:{id:+updatePost.id}}).then(post => {
     res.redirect('/')
   })
 };
@@ -19,7 +20,7 @@ exports.updatePost = (req, res) => {
 exports.deletePost = (req, res) => {
   const deletePost = req.body
   deletePost.UserId = req.session.userId
-  Post.destroy({where:{id:req.params.id}}).then(post =>{
+  Post.destroy({where:{id:deletePost.id}}).then(post =>{
     res.redirect('/')
   })
 };

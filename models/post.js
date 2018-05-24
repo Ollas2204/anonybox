@@ -5,14 +5,14 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.TEXT
   }, {
     hooks:{
-      beforeCreate:(post,options)=>{
-        let contents = post.content.split('\n')
-        for(let i = 0; i < contents.length;i++){
-          contents[i] =  `<p>${contents[i]}</p>`
-        }
-        console.log(contents)
-        post.content = contents.join('')
-      }
+      // beforeCreate:(post,options)=>{
+      //   let contents = post.content.split('\n')
+      //   for(let i = 0; i < contents.length;i++){
+      //     contents[i] =  `<p>${contents[i]}</p>`
+      //   }
+      //   console.log(contents)
+      //   post.content = contents.join('')
+      // }
     }
   });
   

@@ -5,7 +5,7 @@ const isLoggedIn = require('./../middlewares').isLoggedIn;
 
 router.post('/add', isLoggedIn, postsController.addPost)
 router.post('/update', isLoggedIn, postsController.updatePost)
-router.get('/delete/:id', isLoggedIn, postsController.deletePost)
+router.post('/delete', isLoggedIn, postsController.deletePost)
 
 
 module.exports = router

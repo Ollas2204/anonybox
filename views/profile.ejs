@@ -28,9 +28,7 @@
             <div class='panel panel-default post-default' style='padding:20px;margin-top:25px;min-height:180px; background-color: white;border-radius:15px;'>
                 <form id="form<%=posts[i].id%>" style="display:none;" action="/posts/update" method="post">
                         <input type="text" name="id" style="display:none" value = "<%=posts[i].id%>">
-                        <textarea style='height:70px; width:100%;display:flex;border-radius:10px;' name="content" id="" cols="30" rows="10">
-                            <%- posts[i].content %>
-                        </textarea>
+                        <textarea style='height:70px; width:100%;display:flex;border-radius:10px;' name="content" id="" cols="30" rows="10"><%- posts[i].cleanTag %></textarea>
                         <button class="btn btn-default" style='border-radius:5px;margin-top:10px' type="submit">submit</button>
                 </form>
                 <div id="display<%=posts[i].id%>" style='display:block'>

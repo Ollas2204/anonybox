@@ -8,6 +8,9 @@ const {Post,Comment,Like} = models;
 
 router.get('/', (req,res)=>{
   Post.findAll().then(posts=>{
+    posts.forEach(element => {
+      element.cleanTag=element.cleanFromTag()
+    });
     res.render('index',{posts:posts})
   })
 });

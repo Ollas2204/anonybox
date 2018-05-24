@@ -24,12 +24,17 @@
                         </button>
                       </form> 
                     </div>
-                    <button style="border:none;background:none;"><span style="font-size: 1.3em" class="icon-editiconbox"></span> edit</button>
+                    <button onclick="edittextArea('<%=posts[i].id%>')" style="border:none;background:none;"><span style="font-size: 1.3em" class="icon-editiconbox"></span> edit</button>
                     <div class='panel panel-default post-default' style='padding:20px;margin-top:25px;min-height:180px; background-color: white;border-radius:15px;'>
+                      <form id="form<%=posts[i].id%>" style="display:none;" action="/posts/update" method="post">
+                          <input type="text" name="id" style="display:none" value = "<%=posts[i].id%>">
+                          <textarea style='height:70px; width:100%;display:flex;border-radius:10px;' name="content" id="" cols="30" rows="10"><%- posts[i].cleanTag %></textarea>
+                          <button class="btn btn-default" style='border-radius:5px;margin-top:10px' type="submit">submit</button>
+                      </form>
                 <% }else{ %>
                     <div class='panel panel-default post-default' style='padding:20px;margin-top:10px;min-height:180px; background-color: white;border-radius:15px;'>
                 <% } %>
-                  <div>
+                <div id="display<%=posts[i].id%>" style='display:block'>
                     <%- posts[i].content %>
                   </div>
                 </div>
@@ -59,6 +64,17 @@
       </div>
       <% } %>
         <script>
+        function edittextArea(id){
+            let form = document.getElementById('form'+id).style.display
+            let display = document.getElementById('display'+id).style.display
+            if(form === 'none'){
+                document.getElementById('form'+id).style.display = 'block'
+                document.getElementById('display'+id).style.display = 'none'
+            }else{
+                document.getElementById('form'+id).style.display = 'none'
+                document.getElementById('display'+id).style.display = 'block'
+            }
+        }
           function showComment(id) {
             document.getElementById('showcomment'+id).style.display = 'block'
             document.getElementById('hidecomment'+id).style.display = 'none'

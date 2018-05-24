@@ -10,7 +10,6 @@ exports.addPost = (req, res) => {
 
 exports.updatePost = (req, res) => {
   const updatePost = req.body
-  console.log(req.body)
   updatePost.UserId = req.session.userId
   Post.update(updatePost,{where:{id:+updatePost.id}}).then(post => {
     res.redirect('/')

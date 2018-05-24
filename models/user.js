@@ -17,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = function(models) {
-    User.belongsToMany(models.Post, {
-      through: 'Comments'
-    });
-
+    // User.belongsToMany(models.Post, {
+    //   through: 'Comments'
+    // });
+    User.hasMany(models.Comment)
     User.hasMany(models.Post);
   };
 

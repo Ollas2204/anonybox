@@ -24,12 +24,14 @@ module.exports = (sequelize, DataTypes) => {
   });
   
   Post.associate = function(models) {
-    Post.belongsToMany(models.User, {
-      through: 'Comments'
-    });
-
+    // Post.belongsToMany(models.User, {
+    //   through: 'Comments'
+    // });
+    Post.hasMany(models.Comment)
     Post.belongsTo(models.User);
   };
+
+
   Post.prototype.cleanFromTag = function(){
     let contentToClean = this.content.split('\r')
     for(let i = 0; i < contentToClean.length; i++){

@@ -8,3 +8,16 @@
     box-shadow:none;
     border:none;
 }
+.post-template{
+    min-height:300px; 
+    background-color: rgba(44, 44, 44, 0.1);
+    border-radius:15px;
+    padding:15px;
+}
+.comment-template{
+    padding:30px;
+    margin-top:10px;
+    min-height:75px; 
+    background-color: rgba(255, 255, 255, 0.568);
+    border-radius:10px;
+}

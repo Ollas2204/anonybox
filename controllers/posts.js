@@ -1,4 +1,4 @@
-const Post = require('./../models').Post;
+const { Post } = require('./../models');
 
 exports.addPost = (req, res) => {
   const newPost = req.body

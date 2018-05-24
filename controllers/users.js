@@ -27,7 +27,7 @@ exports.showProfilePage = (req, res) => {
   const { userId } = req.params;
       Post
       .findAll({
-        include:[Comment,Tag],
+        include:[Comment,Tag,User],
         order:[['createdAt','DESC']],
         where:{UserId:req.session.userId}})
         .then(posts =>{

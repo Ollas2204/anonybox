@@ -33,4 +33,10 @@ router.get(
   '/search',
   staticController.searchTag);
 
+router.get(
+  '/test',
+  (req,res)=>{
+    res.render('notFound')
+  }
+)
 module.exports = router;

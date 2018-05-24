@@ -39,3 +39,12 @@
     border-radius:10px;
 }
 
+.pointer{
+    cursor: pointer;
+}
+.no-outline:focus{
+    outline:none
+}
+.no-outline:active{
+    outline:none
+}

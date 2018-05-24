@@ -11,7 +11,7 @@ router.get('/', (req,res)=>{
     posts.forEach(element => {
       element.cleanTag=element.cleanFromTag()
     });
-    res.render('index',{ posts, page: 'home' });
+    res.render('index',{ userId:req.session.userId,posts, page: 'home' });
   });
 });
 

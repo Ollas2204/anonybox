@@ -27,6 +27,9 @@ exports.showProfilePage = (req, res) => {
     include: [Post]
   })
     .then(user => {
+      user.Posts.forEach(element => {
+        element.cleanTag=element.cleanFromTag()
+      });
       res.render('profile', { posts: user.Posts })
     });
 };

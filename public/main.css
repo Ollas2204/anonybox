@@ -140,3 +140,39 @@ button:active{
 button:focus{
     outline:none;
 }
+textarea:active{
+    outline:none;
+}
+textarea:focus{
+    outline:none;
+}
+.textarea-input{
+    height:70px;
+    width:900px;
+    display:flex;
+    border-radius:10px;
+}
+.tags-input{
+    border:1px black solid;
+    margin-top:10px;
+    width:900px;
+    display:flex;
+    border-radius:10px;
+}
+.post-header{
+    text-align:center;
+    box-shadow:none;
+    border:none;
+    background:rgba(0,0,0,0) !important;
+    margin:0px;
+    padding:0px;
+}
+.tag-menu{
+    color:rgba(0,0,0,0.4);
+}
+.tag-menu:hover{
+    transition: all 0.3s;
+    -moz-transition:all 0.3s ;
+    -o-transition:all 0.3s ;
+    color:rgba(0,0,0,0.8);
+}

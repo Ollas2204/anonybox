@@ -27,6 +27,9 @@ module.exports = (sequelize, DataTypes) => {
     // Post.belongsToMany(models.User, {
     //   through: 'Comments'
     // });
+    Post.belongsToMany(models.Tag,{
+      through:'PostsTags'
+    })
     Post.hasMany(models.Comment)
     Post.belongsTo(models.User);
   };

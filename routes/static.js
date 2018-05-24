@@ -29,4 +29,8 @@ router.get(
   isLoggedIn,
   authController.logoutUser);
 
+router.get(
+  '/search',
+  staticController.searchTag);
+
 module.exports = router;

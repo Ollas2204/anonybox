@@ -4,7 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.INTEGER
   }, {});
   Tag.associate = function(models) {
-    Tag.hasMany(models.PostsTag)
+    Tag.belongsToMany(models.Post,{
+      through:'PostsTags'
+    })
   };
   return Tag;
 };

@@ -4,9 +4,10 @@
         <div class="centered" style='position:relative'>
           <form class="navbar-form navbar-left col-xs-12" action="/posts/add" method="POST">
             <div class="form-group">
-              <textarea placeholder="  confess your sins!" style='height:70px; width:900px;display:flex;border-radius:10px;' name="content"
+              <textarea class="textarea-input" placeholder="  confess your sins!" name="content"
                 id="" cols="30" rows="10" required></textarea>
             </div>
+              <input class="tags-input" name="tags" type="text" placeholder="  put your tags here...">
             <div class="col-xs-12" style='margin-top:10px;'>
               <button type="submit" class="btn btn-default" style='border-radius:2px;'>Add New Post</button>
             </div>

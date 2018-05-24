@@ -1,4 +1,8 @@
 <div class='panel panel-default col-xs-offset-2 col-xs-8 post-default post-template'>
+    <div class='panel-heading post-header'>
+        <p><%=post.User.username%></p>
+        <p style='font-size: 0.7em'><%=post.createdAt%></p>
+    </div>
     <% if(post.UserId === userId){ %>
       <div style="position:relative;float:right;">                
         <form action="/posts/<%= post.id %>/delete" method="post">
@@ -9,17 +13,24 @@
         </form> 
       </div>
       <button class="post-button" onclick="editpost('<%=post.id%>')" style="border:none;background:none;"><span style="font-size: 1.3em" class="icon-editiconbox"></span> edit</button>
-      <div class='panel panel-default post-default post-content' style=''>
+      <div class='panel panel-default post-default post-content'>
       <form id='form<%=post.id%>' style='display:none' action="">
         <input class="no-outline" name='id' style='display:none' type="text">
-        <textarea style='height:70px; width:900px;display:flex;border-radius:10px;' name="content" cols="30" rows="10"><%=post.cleanTag%></textarea>
+        <textarea class="textarea-input" name="content" cols="30" rows="10"><%=post.cleanTag%></textarea>
         <button class="form-button normal-button" style="margin-top:10px;" type="submit">edit post</button>
       </form>
   <% }else{ %>
       <div class='panel panel-default post-default' style='padding:20px;margin-top:10px;min-height:180px; background-color: white;border-radius:15px;'>
   <% } %>
-    <div id='postcontent<%=post.id%>'>
+    <div style='font-size:1.3em;' id='postcontent<%=post.id%>'>
       <%- post.content %>
+      <% if(post.Tags.length>0){ %>
+        <p><span style='font-size:0.6em;'>tags - </span>
+        <% for(let j in post.Tags){%>
+          <a style='font-size:0.8em' href="/search?searchTag=<%=post.Tags[j].name%>" class="pointer tag-menu"><%= post.Tags[j].name %></a>
+        <% } %>
+        </p>
+      <% } %>
     </div>
   </div>
 
@@ -27,7 +38,7 @@
     <div style="width:100%;height:30px;">                
         <form action="/posts/<%= post.id %>/comments/add" method="POST">
           <input class="no-outline comment-input" type="text" name="content" placeholder=" add comment...">
-            <button class="normal-button" type="submit" style='background:none;border-radius:5px;border:1px rgba(0, 0, 0, 0.4) solid;'>Add comment</button>
+            <button class="normal-button form-button" type="submit">Add comment</button>
         </form>
     </div>
   <% } %>

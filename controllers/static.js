@@ -1,9 +1,9 @@
-const { Post, Comment } = require('./../models');
+const { User, Post, Comment, Tag } = require('./../models');
 
 exports.showHomePage = (req,res)=>{
   let sortBy = 'updatedAt';
   Post.findAll({
-    include: [Comment],
+    include: [User,Comment,Tag],
     order: [[sortBy, 'DESC']]
   }).then(posts=>{
     posts.forEach(element => {
@@ -14,7 +14,32 @@ exports.showHomePage = (req,res)=>{
         return a.Comments.length < b.Comments.length
       });
     }
-
     res.render('index',{ userId:req.session.userId,posts, page: 'home' });
   });
+}
+
+exports.searchTag = (req,res)=>{
+  let searchTag = req.query.searchTag
+  if(searchTag.trim() === '') res.redirect('/')
+  Tag.findOne({include:[Post],where:{name:req.query.searchTag}})
+  .then(Tags=>{
+    if(Tags!==undefined){
+      let getPosts = (i) =>{
+        if(i<Tags.Posts.length){
+          Post.findOne({include:[User,Comment,Tag],where:{id:Tags.Posts[i].id}})
+          .then(postFound=>{
+            Tags.Posts[i] = postFound
+            return getPosts(i+1)
+          })
+        }else{
+          Tags.Posts.sort((a,b) => {
+            return b.createdAt > a.createdAt
+          });
+          console.log(Tags.Posts)
+          res.render('index',{ userId:req.session.userId, page: 'home', posts:Tags.Posts })
+        }
+      }
+      getPosts(0)
+    }
+  })
 }

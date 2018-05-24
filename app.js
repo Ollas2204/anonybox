@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const session = require('express-session');
-const validator = require('express-validator');
 const flash = require('connect-flash');
 const path = require('path');
 const routes = require('./routes');

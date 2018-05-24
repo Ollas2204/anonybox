@@ -7,7 +7,7 @@ const usersController = require('./../controllers').users;
 const { Post, Comment, Like } = models;
 
 router.get('/', (req,res)=>{
-  Post.findAll().then(posts=>{
+  Post.findAll({include:[Comment]}).then(posts=>{
     posts.forEach(element => {
       element.cleanTag=element.cleanFromTag()
     });

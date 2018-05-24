@@ -19,6 +19,15 @@
       <%- include('./template/post.ejs', { post : posts[i] }) %>
     <% } %>
   <script>
+    function editpost(id){
+      if(document.getElementById('form'+id).style.display === 'none'){
+        document.getElementById('form'+id).style.display = 'block'
+        document.getElementById('postcontent'+id).style.display = 'none';
+      }else{
+        document.getElementById('form'+id).style.display = 'none'
+        document.getElementById('postcontent'+id).style.display = 'block';
+      }
+    }
     function showComment(id) {
       document.getElementById('showcomment' + id).style.display = 'block'
       document.getElementById('hidecomment' + id).style.display = 'none'

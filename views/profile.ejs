@@ -13,17 +13,27 @@
           </form>
         </div>
       </div>
+      <% console.log('asdfasdfa'+posts) %>
       <% for(let i = 0; i < posts.length; i++){ %>
         <%- include('./template/post.ejs', { post : posts[i] }) %>
       <% } %>
   <script>
+    function editpost(id){
+      if(document.getElementById('form'+id).style.display === 'none'){
+        document.getElementById('form'+id).style.display = 'block'
+        document.getElementById('postcontent'+id).style.display = 'none';
+      }else{
+        document.getElementById('form'+id).style.display = 'none'
+        document.getElementById('postcontent'+id).style.display = 'block';
+      }
+    }
     function showComment(id) {
-      document.getElementById('showcommentId').style.display = 'block'
-      document.getElementById('hidecommentId').style.display = 'none'
+      document.getElementById('showcomment'+id).style.display = 'block'
+      document.getElementById('hidecomment'+id).style.display = 'none'
     }
     function hideComment(id) {
-      document.getElementById('hidecommentId').style.display = 'block'
-      document.getElementById('showcommentId').style.display = 'none'
+      document.getElementById('hidecomment'+id).style.display = 'block'
+      document.getElementById('showcomment'+id).style.display = 'none'
     }
   </script>
   

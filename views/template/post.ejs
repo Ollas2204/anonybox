@@ -1,4 +1,4 @@
-<div class='panel panel-default col-xs-offset-2 col-xs-8 post-default' style='min-height:300px; background-color: rgba(44, 44, 44, 0.1);border-radius:15px;padding:15px;'>
+<div class='panel panel-default col-xs-offset-2 col-xs-8 post-default post-template'>
     <% if(post.UserId === userId){ %>
       <div style="position:relative;float:right;">                
         <form action="/posts/<%= post.id %>/delete" method="post">
@@ -8,12 +8,17 @@
           </button>
         </form> 
       </div>
-      <button style="border:none;background:none;"><span style="font-size: 1.3em" class="icon-editiconbox"></span> edit</button>
+      <button onclick="editpost('<%=post.id%>')" style="border:none;background:none;"><span style="font-size: 1.3em" class="icon-editiconbox"></span> edit</button>
       <div class='panel panel-default post-default' style='padding:20px;margin-top:25px;min-height:180px; background-color: white;border-radius:15px;'>
+      <form id='form<%=post.id%>' style='display:none' action="">
+        <input name='id' style='display:none' type="text">
+        <textarea style='height:70px; width:900px;display:flex;border-radius:10px;' name="content" cols="30" rows="10"><%=post.cleanTag%></textarea>
+        <button class="btn btn-default" type="submit">edit post</button>
+      </form>
   <% }else{ %>
       <div class='panel panel-default post-default' style='padding:20px;margin-top:10px;min-height:180px; background-color: white;border-radius:15px;'>
   <% } %>
-    <div>
+    <div id='postcontent<%=post.id%>'>
       <%- post.content %>
     </div>
   </div>
@@ -28,18 +33,17 @@
   <% } %>
 
   <div id='hidecomment<%=post.id%>' class='panel panel-default post-default' style='padding-top:5px;padding-left:15px;margin-top:10px;height:35px; background-color: rgba(255, 255, 255, 0.445);border-radius:20px;'>
-    <a onclick="showComment('<%=post.id%>')" style='font-size:0.8em;'>View Comments (18)</a>
+    <a onclick="showComment('<%=post.id%>')" style='font-size:0.8em;'>View Comments (<%=post.Comments.length%>)</a>
   </div>
   <div id='showcomment<%=post.id%>' class='panel panel-default post-default' style='padding:15px;padding-top:5px;padding-left:15px;margin-top:10px;min-height:100px; background-color: rgba(255, 255, 255, 0.445);border-radius:20px;display:none;'>
     <a onclick="hideComment('<%=post.id%>')" style='font-size:0.8em;'>Hide Comments</a>
-    <div id='showcomment<%=post.id%>' class='panel panel-default post-default' style='padding:30px;margin-top:10px;min-height:75px; background-color: rgba(255, 255, 255, 0.568);border-radius:10px;'>
-      <p style='font-size:0.8em;'>Comment1</p>
-    </div>
-    <div id='showcomment<%=post.id%>' class='panel panel-default post-default' style='padding:30px;margin-top:10px;min-height:75px; background-color: rgba(255, 255, 255, 0.568);border-radius:10px;'>
-      <p style='font-size:0.8em;'>Comment2</p>
-    </div>
-    <div id='showcomment<%=post.id%>' class='panel panel-default post-default' style='padding:30px;margin-top:10px;min-height:75px; background-color: rgba(255, 255, 255, 0.568);border-radius:10px;'>
-      <p style='font-size:0.8em;'>Comment3</p>
+
+    <div id='showcomment<%=post.id%>'>
+    <% for(let j in post.Comments){ %>
+      <div class='panel panel-default post-default comment-template'>
+        <p style='font-size:0.8em;'><%=post.Comments[j].content%></p>
+      </div>
+    <% } %>
     </div>
   </div>
 </div>

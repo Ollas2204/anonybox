@@ -1,4 +1,4 @@
-const { User, Post } = require('./../models');
+const { User, Post, Comment } = require('./../models');
 
 exports.showRegisterPage = (req, res) => {
   res.render('registerForm');
@@ -22,15 +22,9 @@ exports.showLoginPage = (req, res) => {
 
 exports.showProfilePage = (req, res) => {
   const { userId } = req.params;
-  User.findOne({ 
-    where : { id : userId },
-    include: [Post]
-  })
-    .then(user => {
-      user.Posts.forEach(element => {
-        element.cleanTag=element.cleanFromTag()
-      });
-      res.render('profile', { posts: user.Posts })
+      Post
+      .findAll({include:[Comment],where:{UserId:req.session.userId}}).then(posts =>{
+      res.render('profile', { posts: posts })
     });
 };
 

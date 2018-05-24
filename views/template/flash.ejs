@@ -1,0 +1,10 @@
+<% if (flashes) { %>
+  <% const categories = Object.keys(flashes) %>
+  <% categories.forEach(category => { %>
+    <% flashes[category].forEach(message => { %>
+      <p class="alert alert-danger">
+        <%= message %>
+      </p>
+    <% }); %>
+  <% }); %>
+<% } %>

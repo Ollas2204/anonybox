@@ -1,20 +1,27 @@
 <%- include('./template/header.ejs') %>
-<body>
-    <%- include('./template/standardNav.ejs') %>
-    <div  class='col-xs-offset-2 col-xs-8'>
-        <h1>Register</h1>
-        <div class='panel panel-default' style='margin-top:25px;padding:50px;'>
-            <form action="http://localhost:3000/users/register" method='post' style='text-align:center !important;'>
-                Email<br>
-                <input class='col-xs-6' name="email" type="text" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'><br><br>
-                Username <br>
-                <input class='col-xs-6' name="username" type="text" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'><br><br>
-                Password <br>
-                <input class='col-xs-6' name="password" type="password" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'><br><br>
-                Confirm Password <br>
-                <input class='col-xs-6' name="password-confirm" type="password" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'><br><br>
-                <button type="submit" style='background:none;border-radius:5px;border:1px rgba(0, 0, 0, 0.4) solid;'>register</button>
-            </form>
-        </div>
+  <div class='col-xs-offset-2 col-xs-8'>
+    <h1>Register</h1>
+    <%- include('./template/flash') %>
+    <div class='panel panel-default' style='margin-top:25px;padding:50px;'>
+      <form action="http://localhost:3000/users/register" method='post' style='text-align:center !important;'>
+        Email
+        <br>
+        <input class='col-xs-6' name="email" type="text" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;' value="<%= body ? body.email : '' %>">
+        <br>
+        <br> Username
+        <br>
+        <input class='col-xs-6' name="username" type="text" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;' value="<%= body ? body.username : '' %>">
+        <br>
+        <br> Password
+        <br>
+        <input class='col-xs-6' name="password" type="password" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'>
+        <br>
+        <br> Confirm Password
+        <br>
+        <input class='col-xs-6' name="password-confirm" type="password" style='float:none;border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;'>
+        <br>
+        <br>
+        <button type="submit" style='background:none;border-radius:5px;border:1px rgba(0, 0, 0, 0.4) solid;'>Register</button>
+      </form>
     </div>
-</body>
+  </div>

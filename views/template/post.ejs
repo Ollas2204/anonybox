@@ -16,7 +16,7 @@
   <% if(username) { %>
     <div style="width:100%;height:30px;">                
         <form action="/posts/<%= post.id %>/comments/add" method="POST">
-            <input name="content" type="text" style="border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;width:80%;" placeholder=" add comment...">
+            <input name="content" type="text" style="border-radius:15px;border:1px rgba(0, 0, 0, 0.4) solid;width:80%;" placeholder=" add comment..." required>
             <button type="submit" style='background:none;border-radius:5px;border:1px rgba(0, 0, 0, 0.4) solid;'>add comment</button>
         </form>
     </div>

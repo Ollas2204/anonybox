@@ -3,6 +3,7 @@ const router = express.Router();
 const { validateRegister } = require('./../middlewares');
 const usersController = require('./../controllers').users;
 const { isLoggedIn, isLoggedOut } = require('./../middlewares');
+const { catchErrors } = require('./../handlers/errorHandlers');
 
 router.get(
   '/register',
@@ -12,7 +13,7 @@ router.get(
 router.post(
   '/register', 
   validateRegister, 
-  usersController.registerUser);
+  catchErrors(usersController.registerUser));
 
 router.get(
   '/:userId', 

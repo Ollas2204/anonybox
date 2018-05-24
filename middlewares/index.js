@@ -1,6 +1,10 @@
 exports.validateRegister = (req, res, next) => {
   const errors = [];
-  const body = req.body;
+  const body = {...req.body};
+  Object.keys(body).forEach(key => {
+    body[key] = body[key].trim();
+  });
+  
   if (!body.email) {
     errors.push({
       error: 'Email is empty',
@@ -8,10 +12,24 @@ exports.validateRegister = (req, res, next) => {
     });
   }
 
+  if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(body.email))) {
+    errors.push({
+      error: 'Invalid Email Format',
+      msg: 'Invalid Email Format'
+    });
+  }
+
   if (!body.username) {
     errors.push({
       error: 'Username is empty',
       msg: 'Username is required'
+    });
+  }
+
+  if (body.username.length < 6) {
+    errors.push({
+      error: 'Username is too short',
+      msg: 'Username must be at least 6 characters long'
     });
   }
 

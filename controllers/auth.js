@@ -10,11 +10,14 @@ exports.loginUser = (req, res) => {
         if (match) {
           req.session.username = user.username;
           req.session.userId = user.id;
+          req.flash('success', "You've logged in successfully")
           res.redirect(`/users/${user.id}`);
         } else {
+          req.flash('error', 'Wrong username / password')
           res.redirect('/login');
         }
       } else {
+        req.flash('error', 'Wrong username / password')
         res.redirect('/login');
       }
     });
@@ -24,6 +27,7 @@ exports.logoutUser = (req, res) => {
   if (req.session.username) {
     delete req.session.username;
     delete req.session.id;
+    req.flash('success', "You've logged out successfully")
     res.redirect('/');
   } else {
     res.redirect('/login');

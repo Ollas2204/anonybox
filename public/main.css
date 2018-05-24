@@ -1,10 +1,26 @@
-.centered{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align: center;
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-.post-default{
-    box-shadow:none;
-    border:none;
+.post-default {
+  box-shadow: none;
+  border: none;
+}
+
+.flash {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flash__remove {
+  background: none;
+  border: 0;
+  color: black;
+  font-size: 16px;
+}
+
+.flash__remove:hover {
+  color: blue;
 }

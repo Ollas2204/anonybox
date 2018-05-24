@@ -2,9 +2,11 @@
   <% const categories = Object.keys(flashes) %>
   <% categories.forEach(category => { %>
     <% flashes[category].forEach(message => { %>
-      <p class="alert alert-danger">
-        <%= message %>
-      </p>
+      <% const flashCategory = category === 'error' ? 'alert-danger' : 'alert-success' %>
+      <div class="flash alert <%= flashCategory %>">
+        <p class="flash__text"><%= message %></p>
+        <button class="flash__remove" onClick="this.parentElement.remove()">&times;</button> 
+      </div>
     <% }); %>
   <% }); %>
 <% } %>

@@ -13,7 +13,10 @@ exports.registerUser = (req, res) => {
   };
 
   return User.create(newUser)
-    .then(result => res.redirect('/login'))
+    .then(result => { 
+      req.flash('success', "You've registered successfully, Please Login");
+      res.redirect('/login');
+    })
 };
 
 exports.showLoginPage = (req, res) => {
@@ -37,7 +40,7 @@ exports.showProfilePage = (req, res) => {
             tagArray = tagArray.join(' ')
             element.tagArray = tagArray
           });
-      res.render('profile', { posts: posts })
+      res.render('profile', { posts, page: 'profile' })
     });
 };
 
@@ -45,15 +48,29 @@ exports.showEditPage = (req, res) => {
   const userId = req.params.userId;
   User.findById(userId)
     .then(user => {
-      res.render('edit-user', { user : user });
+      res.render('editUser', { user });
     });
 };
 
 exports.updateUser = (req, res) => {
   const userId = req.params.userId;
-  const updatedUser = req.body;
+  const updatedUser = {
+    email: req.body.email,
+    username: req.body.username,
+  };
+  if (req.body['new-password']) {
+    updatedUser.password = req.body['new-password'];
+  }
+
   updatedUser.id = userId;
-  if (!updatedUser.password) delete updatedUser.password;
-  User.update(updatedUser, { where : { id : userId }})
-    .then(result => res.redirect(`/${userId}/edit`));
+  return User.update(updatedUser, { where : { id : userId }, individualHooks: true})
+    .then(result => {
+      req.session.username = updatedUser.username;
+      req.flash('success', 'You have update you data successfully');
+      res.redirect('back');
+    });
 };
+
+exports.deleteUser = (req, res) => {
+
+}

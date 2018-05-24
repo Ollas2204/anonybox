@@ -9,6 +9,9 @@
                 <li style='border-right:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/users/register">Register</a></li>
                 <li style='border-left:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/login">Login</a></li>
             <% }else{ %>
+                <% if (page === 'profile') { %>
+                    <li style='border-right:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/users/<%= userId %>/edit">Edit User Data</a></li>
+                <% } %>
                 <li style='border-right:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/users/<%= userId %>"><%= username %></a></li>
                 <li style='border-left:0.1px rgba(0, 0, 0, 0.7) solid'><a href="/logout">Logout</a></li>
             <% } %>

@@ -1,0 +1,114 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M963.090 62.94l-57.838-57.838-856.854 856.852c0 0 108.22 38.033 115.572 114.693 0.087 0.645 0.103 0.982 0.103 0.982l856.854-856.852-57.838-57.838z",
+          "M48.399 861.955c0 0-44.984 104.965-38.559 154.234 49.269 6.427 154.234-38.559 154.234-38.559-0.028-0.33-0.072-0.654-0.103-0.982-0.997-7.368-11.382-55.495-115.572-114.693z"
+        ],
+        "attrs": [
+          {},
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "editicon"
+        ]
+      },
+      "attrs": [
+        {},
+        {}
+      ],
+      "properties": {
+        "order": 20,
+        "id": 7,
+        "name": "editicon",
+        "prevSize": 32,
+        "code": 59648
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M2.262 215.863l215.858-215.858 805.869 805.869-215.858 215.858-805.869-805.869z",
+          "M808.137-0.001l215.858 215.858-805.869 805.869-215.858-215.858 805.869-805.869z"
+        ],
+        "attrs": [
+          {},
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "deleteicon"
+        ]
+      },
+      "attrs": [
+        {},
+        {}
+      ],
+      "properties": {
+        "order": 19,
+        "id": 6,
+        "name": "deleteicon",
+        "prevSize": 32,
+        "code": 59649
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 1
+    }
+  ],
+  "height": 1024,
+  "metadata": {
+    "name": "icomoon"
+  },
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon",
+        "majorVersion": 1,
+        "minorVersion": 0
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false,
+      "postfix": "box",
+      "ie7": true,
+      "noie8": false,
+      "includeMetadata": true,
+      "cssVars": false,
+      "cssVarsFormat": "scss",
+      "showSelector": false,
+      "showMetrics": true,
+      "showMetadata": true,
+      "showVersion": true
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}

@@ -9,18 +9,16 @@ exports.addPost = (req, res) => {
 };
 
 exports.updatePost = (req, res) => {
-  const updatePost = req.body
-  console.log(req.body)
-  updatePost.UserId = req.session.userId
-  Post.update(updatePost,{where:{id:+updatePost.id}}).then(post => {
+  const updatePost = req.body;
+  const postId = req.params.postId;
+  Post.update(updatePost,{ where:{ id: postId }}).then(post => {
     res.redirect('/')
   })
 };
 
 exports.deletePost = (req, res) => {
-  const deletePost = req.body
-  deletePost.UserId = req.session.userId
-  Post.destroy({where:{id:deletePost.id}}).then(post =>{
+  const postId = req.params.postId;
+  Post.destroy({ where:{ id: postId }}).then(post =>{
     res.redirect('/')
-  })
+  });
 };

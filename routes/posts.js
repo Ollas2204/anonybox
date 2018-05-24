@@ -10,12 +10,12 @@ router.post(
   postsController.addPost);
 
 router.post(
-  '/update', 
+  '/:postId/update', 
   isLoggedIn, 
   postsController.updatePost);
 
-router.get(
-  '/delete/:id', 
+router.post(
+  '/:postId/delete', 
   isLoggedIn, 
   postsController.deletePost);
 

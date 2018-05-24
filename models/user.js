@@ -3,8 +3,32 @@ const bcrypt = require('bcrypt');
 
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
-    email: DataTypes.STRING,
-    username: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: {
+          args: true,
+          msg: 'Email format is invalid'
+        },
+        async isEmailUnique(email) {
+          const user = await User.findOne({ where : { email }});
+          if (user && +this.id !== user.id) {
+            throw new Error('Email has been taken');
+          }
+        }
+      }
+    },
+    username: {
+      type: DataTypes.STRING,
+      validate: {
+        async isUsernameUnique(username) {
+          const user = await User.findOne({ where : { username }});
+          if (user && +this.id !== user.id) {
+            throw new Error('Username has been taken');
+          }
+        }
+      }
+    },
     password: DataTypes.STRING
   }, {
     hooks: {

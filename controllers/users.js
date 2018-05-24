@@ -12,8 +12,8 @@ exports.registerUser = (req, res) => {
     password: fields.password
   };
 
-  User.create(newUser)
-    .then(result => res.redirect('/login'));
+  return User.create(newUser)
+    .then(result => res.redirect('/login'))
 };
 
 exports.showLoginPage = (req, res) => {
@@ -39,6 +39,7 @@ exports.showEditPage = (req, res) => {
 exports.updateUser = (req, res) => {
   const userId = req.params.userId;
   const updatedUser = req.body;
+  updatedUser.id = userId;
   if (!updatedUser.password) delete updatedUser.password;
   User.update(updatedUser, { where : { id : userId }})
     .then(result => res.redirect(`/${userId}/edit`));

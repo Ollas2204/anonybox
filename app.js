@@ -5,6 +5,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const path = require('path');
 const routes = require('./routes');
+const errorHandlers = require('./handlers/errorHandlers');
 
 // Setup express app
 const app = express();
@@ -49,6 +50,10 @@ app.use((req,res,next)=>{
 
 // Handle all incoming request to this route
 app.use('/', routes);
+
+app.use(errorHandlers.notFound);
+
+app.use(errorHandlers.flashValidationErrors);
 
 // Start the server
 const server = app.listen(3000, (req, res) => {

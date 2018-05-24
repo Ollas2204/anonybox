@@ -25,7 +25,6 @@
 .flash__remove:hover {
   color: blue;
 }
-
 .post-template{
     min-height:300px; 
     background-color: rgba(44, 44, 44, 0.1);
@@ -39,3 +38,4 @@
     background-color: rgba(255, 255, 255, 0.568);
     border-radius:10px;
 }
+

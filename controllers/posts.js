@@ -80,7 +80,7 @@ exports.deletePost = (req, res) => {
             res.send(err)
           })
         }else{
-          Post.destroy({ where:{ id: postId }}).then(post =>{
+          Post.destroy({ where:{ id: postId }, individualHooks: true }).then(post =>{
             req.flash('success', 'Post deleted successfully');
             res.redirect('back')
           });

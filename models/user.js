@@ -44,13 +44,20 @@ module.exports = (sequelize, DataTypes) => {
           const hash = bcrypt.hashSync(password, 8);
           user.password = hash;
         }
+      },
+      beforeBulkCreate: (instances, options) => {
+        instances.forEach(user => {
+          const password = user.password;
+          const hash = bcrypt.hashSync(password, 8);
+          user.password = hash;
+        });
       }
     }
   });
 
   User.associate = function(models) {
     // User.belongsToMany(models.Post, {
-    //   through: 'Comments'
+    //   through: 'Comments'`
     // });
     User.hasMany(models.Comment)
     User.hasMany(models.Post);

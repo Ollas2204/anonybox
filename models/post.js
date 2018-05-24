@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   var Post = sequelize.define('Post', {
     UserId: DataTypes.INTEGER,
@@ -19,6 +20,12 @@ module.exports = (sequelize, DataTypes) => {
         }
         post.attributes.content = contents.join('')
         console.log('postpost',post)
+      },
+      async afterDestroy(post, options) {
+        await sequelize.models.Comment.destroy({
+          where: { PostId : post.id },
+          truncate: true,
+        });
       }
     }
   });
@@ -30,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     Post.belongsToMany(models.Tag,{
       through:'PostsTags'
     })
-    Post.hasMany(models.Comment)
+    Post.hasMany(models.Comment);
     Post.belongsTo(models.User);
   };
 

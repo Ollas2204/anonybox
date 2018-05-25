@@ -1,7 +1,7 @@
 const { User, Post, Comment, Tag } = require('./../models');
 
 exports.showHomePage = (req,res)=>{
-  let sortBy = 'updatedAt';
+  let sortBy = 'createdAt';
   return Post.findAll({
     include: [User,Comment,Tag],
     order: [[sortBy, 'DESC']]
@@ -13,6 +13,12 @@ exports.showHomePage = (req,res)=>{
       posts.sort((a,b) => {
         return a.Comments.length < b.Comments.length
       });
+    }
+    if (req.query.sortBy === 'updatedAt'){
+      posts.sort((a,b) => {
+        return a.updatedAt < b.updatedAt
+      });
+      console.log(posts)
     }
     res.render('index',{ userId:req.session.userId,posts, page: 'home' });
   });

@@ -3,7 +3,9 @@
 module.exports = (sequelize, DataTypes) => {
   var Post = sequelize.define('Post', {
     UserId: DataTypes.INTEGER,
-    content: DataTypes.TEXT
+    content: DataTypes.TEXT,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
   }, {
     hooks:{
       beforeCreate:(post,options)=>{

@@ -14,7 +14,7 @@
       </div>
       <button class="post-button" onclick="editpost('<%=post.id%>')" style="border:none;background:none;"><span style="font-size: 1.3em" class="icon-editiconbox"></span> edit</button>
       <div class='panel panel-default post-default post-content'>
-      <form id='form<%=post.id%>' style='display:none' action="">
+      <form id='form<%=post.id%>' style='display:none' method="post" action="/posts/<%=post.id%>/update">
         <input class="no-outline" name='id' style='display:none' type="text">
         <textarea class="textarea-input" name="content" cols="30" rows="10"><%=post.cleanTag%></textarea>
         <button class="form-button normal-button" style="margin-top:10px;" type="submit">edit post</button>

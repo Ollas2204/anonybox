@@ -50,7 +50,9 @@ exports.addPost = (req, res) => {
 };
 
 exports.updatePost = (req, res) => {
-  const updatePost = req.body;
+  const updatePost = {
+    content : req.body.content
+  };
   const postId = req.params.postId;
   Post.update(updatePost,{ where:{ id: postId }}).then(post => {
     req.flash('success', 'Post updated successfully');
@@ -67,7 +69,7 @@ exports.deletePost = (req, res) => {
         if(i<tags.length){
           PostsTag.findOne({where:{TagId:tags[i].TagId}})
           .then(relationFound=>{
-            if(relationFound>0){
+            if(relationFound){
                 return inputTags(i+1)
             }else{
               Tag.destroy({where:{id:tags[i].TagId}})

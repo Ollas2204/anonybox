@@ -176,3 +176,11 @@ textarea:focus{
     -o-transition:all 0.3s ;
     color:rgba(0,0,0,0.8);
 }
+
+input:active{
+    outline:none;
+}
+
+input:focus{
+    outline:none;    
+}

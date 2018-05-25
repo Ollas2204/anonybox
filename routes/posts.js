@@ -2,19 +2,21 @@ const express = require('express')
 const router = express.Router()
 const postsController = require('./../controllers').posts;
 const commentsRoutes = require('./comments');
-const { isLoggedIn } = require('./../middlewares');
+const { isLoggedIn, validateContent } = require('./../middlewares');
 const { catchErrors } = require('./../handlers/errorHandlers');
 
 
 router.post(
   '/add', 
-  isLoggedIn, 
+  isLoggedIn,
+  validateContent,
   catchErrors(postsController.addPost)
 );
 
 router.post(
   '/:postId/update', 
-  isLoggedIn, 
+  isLoggedIn,
+  validateContent,
   catchErrors(postsController.updatePost)
 );
 

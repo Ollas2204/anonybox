@@ -175,3 +175,26 @@ exports.isCredetialSame = (req, res, next) => {
     res.redirect('back');
   }
 }
+
+exports.validateContent = (req, res, next) => {
+  const errors = [];
+  const body = {...req.body};
+  Object.keys(body).forEach(key => {
+    body[key] = body[key].trim();
+  });
+
+  if (!body.content) {
+    errors.push({
+      error: 'Content is empty',
+      msg: 'Content cannot be empty'
+    });
+  }
+
+  if (errors.length > 0) {
+    req.flash('error', errors.map(err => err.msg));
+    res.redirect('back');
+    return;
+  }
+
+  next();
+}

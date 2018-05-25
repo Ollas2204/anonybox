@@ -83,8 +83,13 @@ exports.deletePost = (req, res) => {
           })
         }else{
           Post.destroy({ where:{ id: postId }, individualHooks: true }).then(post =>{
-            req.flash('success', 'Post deleted successfully');
-            res.redirect('back')
+            if (post.UserId !== req.session.userId) {
+              req.flash('error', 'You do not have authorization to do that');
+              res.redirect('back');
+            } else {
+              req.flash('success', 'Post deleted successfully');
+              res.redirect('back')
+            }
           });
         }
       }

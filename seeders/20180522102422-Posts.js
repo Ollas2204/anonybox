@@ -11,7 +11,7 @@ module.exports = {
     PostData.forEach(element => {
       element = element.split(',')
       let newObj = {
-        UserId:element[0],
+        UserId:+element[0],
         content:element[1],
         createdAt: new Date(),
         updatedAt: new Date()

@@ -188,3 +188,7 @@ input:focus{
 input{
     padding-left:20px !important;
 }
+
+textarea {
+    padding-left: 16px;
+}

@@ -5,7 +5,7 @@ exports.addPost = (req, res) => {
     content:req.body.content,
   }
   newPost.UserId = req.session.userId
-  Post.create(newPost).then(post => {
+  return Post.create(newPost).then(post => {
     let tag = req.body.tags.split(' ')
     let inputTags = (i) =>{
       if(i<tag.length){
@@ -19,9 +19,6 @@ exports.addPost = (req, res) => {
             PostsTag.create(tagRelation)
             .then(()=>{
               return inputTags(i+1)
-            })
-            .catch(err=>{
-              res.send(err)
             })
           }else{
             Tag.create({name:tag[i]})
@@ -37,9 +34,6 @@ exports.addPost = (req, res) => {
             })
           }
         })
-        .catch(err=>{
-          res.send(err)
-        })
       }else{
         req.flash('success', 'Post added successfully');
         res.redirect('back')
@@ -54,7 +48,7 @@ exports.updatePost = (req, res) => {
     content : req.body.content
   };
   const postId = req.params.postId;
-  Post.update(updatePost,{ where:{ id: postId }}).then(post => {
+  return Post.update(updatePost,{ where:{ id: postId }}).then(post => {
     req.flash('success', 'Post updated successfully');
     res.redirect('back')
   });
@@ -62,7 +56,7 @@ exports.updatePost = (req, res) => {
 
 exports.deletePost = (req, res) => {
   const postId = req.params.postId;
-  PostsTag.findAll({where:{PostId:postId}}).then(tags=>{
+  return PostsTag.findAll({where:{PostId:postId}}).then(tags=>{
     PostsTag.destroy({where:{PostId:postId}})
     .then(()=>{
       let inputTags = (i) =>{
@@ -77,9 +71,6 @@ exports.deletePost = (req, res) => {
                 return inputTags(i+1)
               })
             }
-          })
-          .catch(err=>{
-            res.send(err)
           })
         }else{
           Post.destroy({ where:{ id: postId }, individualHooks: true }).then(post =>{

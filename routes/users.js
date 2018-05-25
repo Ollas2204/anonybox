@@ -17,19 +17,22 @@ router.get(
 router.post(
   '/register', 
   validateRegister, 
-  catchErrors(usersController.registerUser));
+  catchErrors(usersController.registerUser)
+);
 
 router.get(
   '/:userId', 
   isLoggedIn,
   isCredetialSame,
-  usersController.showProfilePage);
+  catchErrors(usersController.showProfilePage)
+);
 
 router.get(
   '/:userId/edit',
   isLoggedIn,
   isCredetialSame,
-  usersController.showEditPage);
+  catchErrors(usersController.showEditPage)
+);
 
 router.post(
   '/:userId/edit',

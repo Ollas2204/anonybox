@@ -2,7 +2,7 @@ const { User, Post, Comment, Tag } = require('./../models');
 
 exports.showHomePage = (req,res)=>{
   let sortBy = 'updatedAt';
-  Post.findAll({
+  return Post.findAll({
     include: [User,Comment,Tag],
     order: [[sortBy, 'DESC']]
   }).then(posts=>{
@@ -21,7 +21,7 @@ exports.showHomePage = (req,res)=>{
 exports.searchTag = (req,res)=>{
   let searchTag = req.query.searchTag
   if(searchTag.trim() === '') res.redirect('/')
-  Tag.findOne({include:[Post],where:{name:req.query.searchTag}})
+  return Tag.findOne({include:[Post],where:{name:req.query.searchTag}})
   .then(Tags=>{
     if(Tags!==undefined){
       let getPosts = (i) =>{
@@ -39,7 +39,12 @@ exports.searchTag = (req,res)=>{
           res.render('index',{ userId:req.session.userId, page: 'home', posts:Tags.Posts })
         }
       }
-      getPosts(0)
+      if (Tags) {
+        getPosts(0)
+      } else {
+        req.flash('error', 'Tags not found');
+        res.redirect('back');
+      }
     }
   })
 }

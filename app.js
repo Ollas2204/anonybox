@@ -58,6 +58,8 @@ app.use(errorHandlers.notFound);
 
 app.use(errorHandlers.flashValidationErrors);
 
+app.use(errorHandlers.showErrors);
+
 // Start the server
 const server = app.listen(process.env.PORT || 3000, (req, res) => {
   console.log(`Server running on port ${server.address().port}`);

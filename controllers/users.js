@@ -25,7 +25,7 @@ exports.showLoginPage = (req, res) => {
 
 exports.showProfilePage = (req, res) => {
   const { userId } = req.params;
-      Post
+      return Post
       .findAll({
         include:[Comment,Tag,User],
         order:[['createdAt','DESC']],
@@ -46,7 +46,7 @@ exports.showProfilePage = (req, res) => {
 
 exports.showEditPage = (req, res) => {
   const userId = req.params.userId;
-  User.findById(userId)
+  return User.findById(userId)
     .then(user => {
       res.render('editUser', { user });
     });

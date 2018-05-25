@@ -6,8 +6,10 @@ const authController = require('./../controllers').auth;
 const usersController = require('./../controllers').users;
 const staticController = require('./../controllers').static;
 const { Post, Comment, Like } = models;
+const { catchErrors } = require('./../handlers/errorHandlers');
 
-router.get('/', staticController.showHomePage);
+
+router.get('/', catchErrors(staticController.showHomePage));
 
 router.get('/dashboard', isLoggedIn, (req, res) => {
   res.render('dashboard');
@@ -22,7 +24,8 @@ router.get(
 router.post(
   '/login',
   isLoggedOut,
-  authController.loginUser);
+  catchErrors(authController.loginUser)
+);
 
 router.get(
   '/logout', 
@@ -31,12 +34,15 @@ router.get(
 
 router.get(
   '/search',
-  staticController.searchTag);
+  catchErrors(staticController.searchTag)
+);
 
 router.get(
   '/test',
-  (req,res)=>{
-    res.render('notFound')
+  (req, res) => {
+  
   }
 )
+
+
 module.exports = router;

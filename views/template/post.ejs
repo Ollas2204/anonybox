@@ -25,9 +25,11 @@
     <div style='font-size:1.3em;' id='postcontent<%=post.id%>'>
       <%- post.content %>
       <% if(post.Tags.length>0){ %>
-        <p><span style='font-size:0.6em;'>tags - </span>
+        <p><span style='font-size:0.6em;'>tags : </span>
         <% for(let j in post.Tags){%>
-          <a style='font-size:0.8em' href="/search?searchTag=<%=post.Tags[j].name%>" class="pointer tag-menu"><%= post.Tags[j].name %></a>
+          <% let tagName = post.Tags[j].name %>
+          <% tagName = tagName.replace(/#/g, '%23') %>
+          <a style='font-size:0.8em' href="/search?searchTag=<%= tagName %>" class="pointer tag-menu"><%= post.Tags[j].name %></a>
         <% } %>
         </p>
       <% } %>

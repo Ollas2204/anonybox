@@ -2,22 +2,20 @@
 const fs = require('fs')
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    let UserData = fs.readFileSync('users.csv','utf8').split('\n')
-    let userArray = []
+    let TagData = fs.readFileSync('tags.csv','utf8').split('\n')
+    let tagArray = []
 
-    UserData.forEach(element => {
+    TagData.forEach(element => {
       element = element.split(',')
       let newObj = {
-        email:element[0],
-        username:element[1],
-        password:element[2],
+        name:element[0],
         createdAt: new Date(),
         updatedAt: new Date()
       }
-      userArray.push(newObj)
+      tagArray.push(newObj)
     });
 
-    return queryInterface.bulkInsert('Users', userArray , {});
+    return queryInterface.bulkInsert('Tags', tagArray , {});
   },
 
   down: (queryInterface, Sequelize) => {

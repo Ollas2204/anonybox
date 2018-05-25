@@ -27,6 +27,9 @@
     <% for(let i = 0; i < posts.length; i++){ %>
       <%- include('./template/post.ejs', { post : posts[i] }) %>
     <% } %>
+    <% if(statusURL === 'searching'){ %>
+      <a class='col-xs-12 centered' href="/">remove tag search</a>
+    <% } %>
   <script>
     function editpost(id){
       if(document.getElementById('form'+id).style.display === 'none'){

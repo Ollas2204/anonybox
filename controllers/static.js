@@ -20,7 +20,7 @@ exports.showHomePage = (req,res)=>{
       });
       console.log(posts)
     }
-    res.render('index',{ userId:req.session.userId,posts, page: 'home' });
+    res.render('index',{ userId:req.session.userId,posts, page: 'home' , statusURL:''});
   });
 }
 
@@ -41,8 +41,7 @@ exports.searchTag = (req,res)=>{
           Tags.Posts.sort((a,b) => {
             return b.createdAt > a.createdAt
           });
-          console.log(Tags.Posts)
-          res.render('index',{ userId:req.session.userId, page: 'home', posts:Tags.Posts })
+          res.render('index',{ userId:req.session.userId, page: 'home', posts:Tags.Posts, statusURL:'searching' })
         }
       }
       if (Tags) {

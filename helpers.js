@@ -19,7 +19,7 @@ exports.convertDate = (date) => {
   const hours = date.getHours();
   const minutes = date.getMinutes();
   
-  return `${day} ${month} ${year} / ${hours}:${minutes}`;
+  return `${day} ${month} ${year}, ${hours}:${minutes}`;
 }
 
 

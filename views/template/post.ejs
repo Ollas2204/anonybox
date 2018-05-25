@@ -1,7 +1,7 @@
 <div class='panel panel-default col-xs-offset-2 col-xs-8 post-default post-template'>
     <div class='panel-heading post-header'>
         <p><%=post.User.username%></p>
-        <p style='font-size: 0.7em'><%=post.createdAt%></p>
+        <p style='font-size: 0.7em'><%=helpers.convertDate(post.createdAt)%></p>
     </div>
     <% if(post.UserId === userId){ %>
       <div style="position:relative;float:right;">                
